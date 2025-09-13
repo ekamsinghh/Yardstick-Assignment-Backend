@@ -1,0 +1,33 @@
+const express = require('express');
+const { createNote, getNotes, getNote, updateNote, deleteNote } = require('../controllers/noteController.js');
+const protect = require('../middleware/authMiddleware.js');
+const router = express.Router();
+
+//auth
+router.post('/login',);
+
+//notes
+router.post('/notes',protect,createNote);
+router.get('/notes',protect,getNotes);
+router.get('/notes/:id',protect,getNote);
+router.put('/notes/:id',protect,updateNote);
+router.delete('/notes/:id',protect,deleteNote);
+
+//health check
+router.get('/health', (req,res) => {
+    try{
+        res.status(200).json({
+            status: 'OK'
+        });
+    }catch(error){
+        res.status(500).json({
+            status: 'ERROR',
+            error: error.message
+        });
+    }
+});
+
+//upgrade
+router.post('/upgrade',upgradeSubscription);
+
+module.exports = router;
