@@ -1,7 +1,7 @@
-import { Note } from "../models/note";
-import { Tenant } from "../models/tenant";
+const Note  = require("../models/notes");
+const Tenant = require("../models/tenant");
 
-export class NoteRepository {
+class NoteRepository {
   async createNote({ title, content, userId, tenantId }) {
     try {
       const tenant = await Tenant.findById(tenantId);
@@ -56,4 +56,6 @@ export class NoteRepository {
       throw new Error(`Failed to delete note: ${err.message}`);
     }
   }
-}
+};
+
+module.exports = NoteRepository;

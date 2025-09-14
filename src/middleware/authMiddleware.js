@@ -1,10 +1,9 @@
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../config/index");
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const protect = (req, res, next) => {
   try {
     let token = req.headers["authorization"];
-
     if (!token || !token.startsWith("Bearer ")) {
       return res.status(401).json({
         message: "No token provided",
@@ -14,7 +13,7 @@ const protect = (req, res, next) => {
 
     token = token.split(" ")[1];
     const payload = jwt.verify(token, JWT_SECRET);
-
+    console.log(payload);
     req.user = {
       userId: payload.userId,
       tenantId: payload.tenantId,

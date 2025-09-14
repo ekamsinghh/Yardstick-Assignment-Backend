@@ -1,10 +1,11 @@
 const express = require('express');
 const { createNote, getNotes, getNote, updateNote, deleteNote } = require('../controllers/noteController.js');
+const { login } = require('../controllers/authController.js');
 const protect = require('../middleware/authMiddleware.js');
 const router = express.Router();
 
 //auth
-router.post('/login',);
+router.post('/login',login);
 
 //notes
 router.post('/notes',protect,createNote);
@@ -28,6 +29,6 @@ router.get('/health', (req,res) => {
 });
 
 //upgrade
-router.post('/upgrade',upgradeSubscription);
+// router.post('/upgrade',upgradeSubscription);
 
 module.exports = router;

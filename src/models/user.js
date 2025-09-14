@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   email: { 
@@ -20,3 +20,6 @@ const userSchema = new mongoose.Schema({
     ref: "Tenant",
     required: true }
 });
+
+const User = mongoose.model("User", userSchema);
+module.exports = User;

@@ -1,9 +1,10 @@
-import { NoteRepository } from "../repositories/noteRepository";
+const NoteRepository = require("../repository/noteRepository");
 
 const noteRepo = new NoteRepository();
 
 const createNote = async (req, res) => {
   try {
+    // console.log(req.user);
     const { title, content } = req.body;
     const { userId, tenantId } = req.user;
     const note = await noteRepo.createNote({ title, content, userId, tenantId });
