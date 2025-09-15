@@ -22,7 +22,16 @@ const upgradeTenantSubscription = async (tenantId) => {
   }
 };
 
+const findTenantById = async (id) => {
+  try {
+    return await Tenant.findById(id);
+  } catch (err) {
+    throw new Error("Error finding tenant by ID: " + err.message);
+  }
+}
+
 module.exports = {
   findTenantBySlug,
-  upgradeTenantSubscription
+  upgradeTenantSubscription,
+  findTenantById
 };

@@ -1,4 +1,4 @@
-const { findTenantBySlug, upgradeTenantSubscription } = require("../repository/tenantRepository");
+const { findTenantById, findTenantBySlug, upgradeTenantSubscription } = require("../repository/tenantRepository");
 
 const upgradeSubscription = async (req, res) => {
   try {
@@ -35,6 +35,20 @@ const upgradeSubscription = async (req, res) => {
   }
 };
 
+const getTenant = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const tenant = await findTenantById(id);
+    if (!tenant) {
+      return res.status(404).json({ message: "Tenant not found", success: false });
+    }
+    res.status(200).json({ tenant });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get tenant", success: false, error: err.message });
+  }
+};
+
 module.exports = {
-  upgradeSubscription
+  upgradeSubscription,
+  getTenant
 };
