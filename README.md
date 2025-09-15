@@ -49,11 +49,11 @@ npm start
 ## API Endpoints
 | Method | Endpoint                 | Protected | Description                                      |
 | ------ | ------------------------ | --------- | ------------------------------------------------ |
-| POST   | `/login`                 | ❌ No      | Login with email and password, returns JWT       |
-| POST   | `/notes`                 | ✅ Yes     | Create a new note (tenant limit enforced)        |
-| GET    | `/notes`                 | ✅ Yes     | Get all notes for the current tenant             |
-| GET    | `/notes/:id`             | ✅ Yes     | Get a specific note by ID                        |
-| PUT    | `/notes/:id`             | ✅ Yes     | Update a specific note                           |
-| DELETE | `/notes/:id`             | ✅ Yes     | Delete a specific note                           |
-| POST   | `/tenants/:slug/upgrade` | ✅ Yes     | Upgrade tenant subscription to Pro (Admins only) |
-| GET    | `/health`                | ❌ No      | Health check endpoint                            |
+| POST   | `api/login`                 | ❌ No      | Login with email and password, returns JWT       |
+| POST   | `api/notes`                 | ✅ Yes     | Create a new note (tenant limit enforced)        |
+| GET    | `api/notes`                 | ✅ Yes     | Get all notes for the current tenant             |
+| GET    | `api/notes/:id`             | ✅ Yes     | Get a specific note by ID                        |
+| PUT    | `api/notes/:id`             | ✅ Yes     | Update a specific note                           |
+| DELETE | `api/notes/:id`             | ✅ Yes     | Delete a specific note                           |
+| POST   | `api/tenants/:slug/upgrade` | ✅ Yes     | Upgrade tenant subscription to Pro (Admins only) |
+| GET    | `api/health`                | ❌ No      | Health check endpoint                            |
