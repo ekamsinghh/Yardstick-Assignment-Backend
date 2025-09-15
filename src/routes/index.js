@@ -2,6 +2,7 @@ const express = require('express');
 const { createNote, getNotes, getNote, updateNote, deleteNote } = require('../controllers/noteController.js');
 const { login } = require('../controllers/authController.js');
 const protect = require('../middleware/authMiddleware.js');
+const { upgradeSubscription } = require('../controllers/tenantController.js');
 const router = express.Router();
 
 //auth
@@ -29,6 +30,6 @@ router.get('/health', (req,res) => {
 });
 
 //upgrade
-// router.post('/upgrade',upgradeSubscription);
+router.post('/tenants/:slug/upgrade',protect,upgradeSubscription);
 
 module.exports = router;

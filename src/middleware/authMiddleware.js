@@ -13,13 +13,12 @@ const protect = (req, res, next) => {
 
     token = token.split(" ")[1];
     const payload = jwt.verify(token, JWT_SECRET);
-    console.log(payload);
     req.user = {
       userId: payload.userId,
       tenantId: payload.tenantId,
       role: payload.role
     };
-
+    // console.log(req);
     next();
   } catch (err) {
     return res.status(401).json({
