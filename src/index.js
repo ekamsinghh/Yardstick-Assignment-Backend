@@ -1,9 +1,9 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const connectDB = require('./config/db_config.js');
 const apiRoutes = require('./routes/index.js');
-const PORT = process.env.PORT || 5000;
+
+const app = express();
 
 app.use(cors({
     origin: '*',
@@ -14,12 +14,12 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+connectDB();
+
 app.get('/', (req, res) => {
     res.send('Server Configured Successfully');
 });
 
 app.use('/api', apiRoutes);
-app.listen(PORT, () => {
-    console.log(`Server in running on Port: ${PORT}`);
-    connectDB();
-});
+
+module.exports = app;
